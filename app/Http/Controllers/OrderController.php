@@ -47,7 +47,8 @@ class OrderController extends Controller
 
             $lastOrderId = $result->order_id;
         }
-
+$notification = new \App\Services\NotificationService();
+$notification->sendOrderConfirmation($lastOrderId, auth()->user()->name);
         session()->forget('cart');
 
         return redirect('/orders/history')->with('success', 'Order placed successfully!');
