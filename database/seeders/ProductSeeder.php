@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProductSeeder extends Seeder
 {
@@ -29,5 +30,16 @@ class ProductSeeder extends Seeder
                 'updated_at' => now(),
             ]);
         }
+       
+
+// run() function ke end mein add karo, loop ke baad:
+DB::table('users')->insert([
+    'name'       => 'Manager',
+    'email'      => 'manager@grocery.com',
+    'password'   => Hash::make('password123'),
+    'role'       => 'manager',
+    'created_at' => now(),
+    'updated_at' => now(),
+]);
     }
 }
